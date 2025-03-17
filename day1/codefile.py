@@ -136,3 +136,86 @@ i = None        # NoneType
 # Printing the type of each variable
 print(type(a), type(b), type(c), type(d), type(e), type(f), type(g), type(h), type(i))
 
+
+
+
+# 2.6. Type Conversion Functions
+# 2. **Exercise:**
+#    - Convert variables between types and observe the results:
+#      ```python
+#      num = '123'
+#      converted_num = int(num)
+#      print(converted_num, type(converted_num))
+#      ```
+
+
+binary_str = "1101"
+binary_num = int(binary_str, 2)  # Convert binary string to an integer
+print(binary_num, type(binary_num))
+
+decimal_val = 99.99
+int_val = int(decimal_val)  # Convert float to int (truncation)
+print(int_val, type(int_val))
+
+bool_val = bool(0)  # Convert an integer to boolean
+print(bool_val, type(bool_val))
+
+
+# 2.7. Variables2. **Exercise:**
+#    - Assign values to variables, print them, and observe changes upon reassignment.
+
+message = "Hello, Python!"
+print("Original Message:", message)
+message = "Welcome to coding!"
+print("Updated Message:", message)
+
+
+# 2.8. Variable Names and Keywords
+
+# 1. **Exercise:**
+#    - Try using reserved keywords as variable names and observe the errors.
+import keyword
+print("Python Reserved Keywords:", keyword.kwlist)
+
+# Trying to use a reserved keyword as a variable (will cause an error)
+# class = "Programming"  # Uncommenting this will cause an error
+
+
+# 2.9. Choosing the Right Variable Name
+# Poor variable naming
+a = 1000
+b = 0.15
+c = a - (a * b)
+print("Poor Naming Result:", c)
+
+# Better variable naming
+original_price = 1000
+discount_percentage = 0.15
+final_price = original_price - (original_price * discount_percentage)
+print("Better Naming Result:", final_price)
+
+
+# 2.10. Statements and Expressions
+result = (10 + 5) * 3  # This is an expression
+print(result)  # This is a statement
+
+
+# 2.11. Order of Operations
+calculation = 10 + 3 * 5 ** 2 // 2 - 4
+print("Order of Operations Result:", calculation)
+
+
+# 2.12. Reassignment
+counter = 1
+print("Initial Counter:", counter)
+counter = counter + 4
+print("Updated Counter:", counter)
+
+
+# 2.13. Updating Variables
+balance = 5000
+balance += 2000  # Add money
+print("Updated Balance:", balance)
+
+balance -= 500  # Deduct money
+print("Final Balance:", balance)
