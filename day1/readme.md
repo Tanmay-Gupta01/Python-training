@@ -94,3 +94,27 @@ Logical operators are used to form compound conditions by combining multiple com
   ---
   - Python is a dynamically typed language, meaning that variables do not have a fixed type. Instead, the type of a variable is determined at runtime based on the value assigned to it. This allows flexibility but also requires careful handling to avoid type-related errors.
   ---
+
+## 2.10. Statements and Expressions
+
+1. **Research:**
+   #### Differentiate between statements and expressions.
+   ---
+   ##### Expressions
+      An expression is a combination of values, variables, operators, and function calls that evaluates to a single result. Expressions always return a value and can be used within other expressions or assigned to variables.
+
+    ###### Key Characteristics of Expressions:
+      Always produce a value when evaluated.
+      Can be assigned to variables or used in conditions.
+      Can be part of a statement but cannot exist independently as a full statement.
+    ##### Statements
+      A statement is a complete instruction that performs an action. It does not necessarily return a value but affects the program’s flow, such as assignments, conditionals, loops, and function definitions.
+
+    ###### Key Characteristics of Statements:
+      Perform actions rather than just evaluating a value.
+      Can contain expressions within them.
+      Control the flow of execution in a program.
+    ###### Key Differences
+      Expressions evaluate to a single value, while statements perform an action.
+      Expressions can be part of a statement, but statements cannot be part of an expression.
+      Statements control the flow of a program, while expressions process and return values.
