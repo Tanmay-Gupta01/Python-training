@@ -1,17 +1,9 @@
 ## 2.2. Values and Data Types
 
-1. **Research:**
-   - What is a value in Python?
-   - Identify different data types in Python (e.g., integers, floats, strings, booleans).
-2. **Fun Fact:**
-   - Python is dynamically typed — you don’t need to declare the type of a variable when you create one.
-
-
 1.  What is a value in Python?
     - In Python, a value is any piece of data that a program manipulates. It can be a number, text, or more complex data like lists or dictionaries. Every value belongs to a specific data type.
 
 2. Identify different data types in Python (e.g., integers, floats, strings, booleans).
-    - # Python Data Types
 
 ## 1. Numeric Types
 Python supports different types of numbers:
