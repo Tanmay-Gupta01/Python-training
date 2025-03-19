@@ -173,8 +173,6 @@ import my_package
 
 print(my_package.greet("Alice"))  # Output: Hello, Alice!
 ```
-
-
 ## 7. Investigate sys.path
 ### Task:
 Modify `sys.path` to include a custom directory.
@@ -182,8 +180,16 @@ Modify `sys.path` to include a custom directory.
 ### Implementation:
 ```python
 import sys
-sys.path.append('/custom/path/to/modules')
-import mymodule
+from pathlib import Path
+
+custom_path = Path("/custom/path/to/modules").resolve()
+sys.path.append(str(custom_path))
+
+try:
+    import mymodule
+    print("Module imported successfully.")
+except ModuleNotFoundError:
+    print("Module not found in the specified path.")
 ```
 
 ## 8. Mocking Modules for Testing
@@ -195,8 +201,11 @@ Use `unittest.mock` to mock module functions during testing.
 from unittest import mock
 import math
 
-with mock.patch('math.sqrt', return_value=100):
-    print(math.sqrt(25))  # 100
+def test_mock_sqrt():
+    with mock.patch('math.sqrt', return_value=100):
+        return math.sqrt(25)  # Should return 100
+
+print(test_mock_sqrt())
 ```
 
 ## 9. Import Side Effects
@@ -206,7 +215,10 @@ Create a module that runs code upon import.
 ### Implementation:
 ```python
 # mymodule.py
-print("This runs on import!")
+print("Module has been imported successfully!")
+
+def my_function():
+    return "Hello from mymodule!"
 ```
 
 ## 10. Investigate Python’s Import Caching
@@ -218,8 +230,10 @@ Explore `sys.modules` to understand how Python caches modules.
 import sys
 import mymodule
 
-print(sys.modules['mymodule'])
+print("Cached module info:", sys.modules.get('mymodule'))
+
+def reload_module():
+    import importlib
+    importlib.reload(mymodule)
+    print("Module reloaded.")
 ```
-
-This document provides an overview of import-related tasks and solutions in Python. 🚀
-
