@@ -71,8 +71,16 @@ print(f"Import time: {end - start}")
 # sys_path.py
 
 import sys
-sys.path.append('/custom/path/to/modules')
-import mymodule
+from pathlib import Path
+
+custom_path = Path("/custom/path/to/modules").resolve()
+sys.path.append(str(custom_path))
+
+try:
+    import mymodule
+    print("Module imported successfully.")
+except ModuleNotFoundError:
+    print("Module not found in the specified path.")
 
 # Q8. Mocking Modules for Testing
 # mock_test.py
@@ -80,13 +88,19 @@ import mymodule
 from unittest import mock
 import math
 
-with mock.patch('math.sqrt', return_value=100):
-    print(math.sqrt(25))  # 100
+def test_mock_sqrt():
+    with mock.patch('math.sqrt', return_value=100):
+        return math.sqrt(25)  # Should return 100
+
+print(test_mock_sqrt())
 
 # Q9. Import Side Effects
 # side_effect.py
 
-print("This runs on import!")
+print("Module has been imported successfully!")
+
+def my_function():
+    return "Hello from mymodule!"
 
 # Q10. Investigate Python’s Import Caching
 # import_cache.py
@@ -94,4 +108,9 @@ print("This runs on import!")
 import sys
 import mymodule
 
-print(sys.modules['mymodule'])
+print("Cached module info:", sys.modules.get('mymodule'))
+
+def reload_module():
+    import importlib
+    importlib.reload(mymodule)
+    print("Module reloaded.")
