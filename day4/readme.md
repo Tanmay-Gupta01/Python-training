@@ -185,3 +185,244 @@ def merge_sorted_lists(lst1, lst2):
 
 print(merge_sorted_lists([1, 3, 5], [2, 4, 6]))  # Output: [1, 2, 3, 4, 5, 6]
 ```
+
+
+
+
+
+
+
+# 🚀 Questions on Sequences in Python
+
+## 1. Data Pipeline Validator
+
+**Task**: Identify the longest pipeline and return pipelines taking more than a given threshold time.
+
+```python
+pipelines = [
+    ("Data Ingestion", 30),
+    ("Preprocessing", 45),
+    ("Model Training", 120),
+    ("Evaluation", 20)
+]
+threshold = 40
+
+longest_pipeline = max(pipelines, key=lambda x: x[1])[0]
+exceeding_pipelines = [p[0] for p in pipelines if p[1] > threshold]
+
+print("Longest Pipeline:", longest_pipeline)
+print("Pipelines exceeding threshold:", exceeding_pipelines)
+```
+
+## 2. Log File Parser
+
+**Task**: Extract unique error codes from a log file.
+
+```python
+logs = """ERROR 404: Not Found
+INFO: Connection established
+ERROR 500: Internal Server Error
+ERROR 404: Not Found
+"""
+
+error_codes = set(line.split()[1].strip(':') for line in logs.split('\n') if line.startswith("ERROR"))
+print("Unique Error Codes:", list(error_codes))
+```
+
+## 3. Config File Reader
+
+**Task**: Parse key-value pairs from a configuration string.
+
+```python
+config = "host=127.0.0.1;port=8080;mode=debug"
+config_pairs = [tuple(pair.split('=')) for pair in config.split(';')]
+print(config_pairs)
+```
+
+## 4. Social Media Data Cleaner
+
+**Task**: Extract unique hashtags from a social media post.
+
+```python
+post = "Loving the new #Python course! #Coding #Python #Learning"
+hashtags = list(set(word for word in post.split() if word.startswith('#')))
+print(hashtags)
+```
+
+## 5. Secret Code Decoder
+
+**Task**: Extract every third character from a string.
+
+```python
+secret_message = "hweollrolwd"
+decoded_message = secret_message[::3]
+print(decoded_message)
+```
+
+## 6. Inventory Tracker
+
+**Task**: Find the product with the highest quantity.
+
+```python
+inventory = [
+    ("Apples", 50),
+    ("Oranges", 75),
+    ("Bananas", 30)
+]
+most_stocked = max(inventory, key=lambda x: x[1])[0]
+print(most_stocked)
+```
+
+## 7. Survey Data Analyzer
+
+**Task**: Extract scores from a survey string and find min/max.
+
+```python
+survey_data = "5,3,4,1,2"
+scores = list(map(int, survey_data.split(',')))
+print("Max Score:", max(scores))
+print("Min Score:", min(scores))
+```
+
+## 8. Access Control Manager
+
+**Task**: Manage user access levels using lists and tuples.
+
+```python
+users = ["Alice", "Bob", "Charlie"]
+roles = ("Admin", "Editor", "Viewer")
+access = dict(zip(users, roles))
+print(access)
+```
+
+## 9. Customer Support Ticket System
+
+**Task**: Categorize tickets based on message length.
+
+```python
+message = "My account is locked, please help!"
+length = len(message)
+category = "Short" if length < 20 else "Medium" if length < 50 else "Long"
+print("Category:", category)
+```
+
+## 10. Product Catalog Manager
+
+**Task**: Find the product with the longest name.
+
+```python
+products = ["Laptop", "Smartphone", "Wireless Headphones"]
+longest_product = max(products, key=len)
+print(longest_product)
+```
+
+## 11. Sensor Data Analyzer
+
+**Task**: Extract the last 10 sensor readings and calculate the average.
+
+```python
+sensor_readings = [12, 15, 14, 16, 20, 22, 21, 23, 25, 30, 28, 27]
+last_10 = sensor_readings[-10:]
+average = sum(last_10) / len(last_10)
+print("Average:", average)
+```
+
+## 12. Transaction Reverser
+
+**Task**: Reverse the list of transactions.
+
+```python
+transactions = [100, -50, 200, -150, 50]
+reversed_transactions = transactions[::-1]
+print(reversed_transactions)
+```
+
+## 13. Log Formatter
+
+**Task**: Format logs with timestamps.
+
+```python
+logs = ["System Boot", "Network Connected", "User Login"]
+timestamp = "2025-03-20"
+formatted_logs = [f"{timestamp}: {log}" for log in logs]
+print(formatted_logs)
+```
+
+## 14. Pattern Generator
+
+**Task**: Generate patterns with repetition.
+
+```python
+symbol = "*"
+count = 5
+pattern = " ".join([symbol] * count)
+print(pattern)
+```
+
+## 15. Customer Feedback Analyzer
+
+**Task**: Count keyword occurrences.
+
+```python
+feedback = "The product is excellent, absolutely excellent!"
+count = feedback.lower().count("excellent")
+print("'excellent' count:", count)
+```
+
+## 16. Sentence Index Finder
+
+**Task**: Find the index of the first occurrence of "error".
+
+```python
+log = "INFO: All systems go. ERROR: Failed to start service."
+index = log.lower().find("error")
+print("Index:", index)
+```
+
+## 17. CSV Parser
+
+**Task**: Parse CSV data into lists.
+
+```python
+csv_data = "Alice,25,Engineer\nBob,30,Doctor\nCharlie,22,Artist"
+rows = [row.split(',') for row in csv_data.split('\n')]
+print(rows)
+```
+
+## 18. Username Generator
+
+**Task**: Generate usernames from full names.
+
+```python
+names = ["Alice Wonderland", "Bob Builder", "Charlie Chaplin"]
+usernames = [name.split()[0][0] + name.split()[1] for name in names]
+print(usernames)
+```
+
+## 19. Chat Log Analyzer
+
+**Task**: Count messages per user from chat logs.
+
+```python
+chat_logs = [
+    "Alice: Hi!",
+    "Bob: Hello!",
+    "Alice: How are you?",
+    "Bob: I’m good, thanks!"
+]
+from collections import Counter
+message_counts = Counter(log.split(':')[0] for log in chat_logs)
+print(message_counts)
+```
+
+## 20. Data Compressor
+
+**Task**: Compress recurring substrings.
+
+```python
+data = "abababababab"
+substring = "ab"
+count = data.count(substring)
+print(f"'{substring}' repeated {count} times")
+```
+
