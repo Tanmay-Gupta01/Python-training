@@ -1,149 +1,120 @@
-#  1. Employee Attendance Tracker
+# Problem 1: Bank Loan Eligibility System
+# Create a program to check if a user is eligible for a bank loan based on salary, age, and credit score using nested conditionals.
 
-from datetime import date, timedelta
-
-class Employee:
-    """Manages employee records and attendance"""
-
-    employee_list = []
-    count = 1000  # Employee ID starts from 1001
-
-    def create_employee(self, name, age):
-        Employee.count += 1
-        employee = {
-            'Emp_id': Employee.count,
-            'name': name,
-            'age': age,
-            'attendance': []  # Initialize empty attendance list
-        }
-        self.employee_list.append(employee)
-        print(f"Employee created successfully! Employee ID: {employee['Emp_id']}")
-
-    def display_employee_all(self):
-        if not self.employee_list:
-            print("No employees found.")
-            return
-        for employee in self.employee_list:
-            print(f"Emp ID: {employee['Emp_id']}, Name: {employee['name']}, Age: {employee['age']}")
-
-    def mark_attendance(self, emp_id):
-        for employee in self.employee_list:
-            if employee['Emp_id'] == emp_id:
-                last_seven_days = [date.today() - timedelta(days=i) for i in range(6, -1, -1)]
-                attendance_data = {}
-
-                for day in last_seven_days:
-                    while True:
-                        attendance = input(f"Enter attendance for {day} ('p' for present, 'a' for absent): ").strip().lower()
-                        if attendance in ['p', 'a']:
-                            attendance_data[str(day)] = attendance
-                            break
-                        print("Invalid input! Please enter 'p' or 'a'.")
-
-                employee['attendance'].append(attendance_data)
-                print("Attendance marked successfully!")
-                return
-        print("Employee ID not found!")
-
-    def view_attendance(self, emp_id):
-        for employee in self.employee_list:
-            if employee['Emp_id'] == emp_id:
-                if not employee['attendance']:
-                    print("No attendance records found for this employee.")
-                    return
-                print(f"Attendance for {employee['name']}:")
-                for record in employee['attendance']:
-                    for date, status in record.items():
-                        print(f"{date}: {'Present' if status == 'p' else 'Absent'}")
-                return
-        print("Employee ID not found!")
-
-    def get_employee_id(self, name):
-        for employee in self.employee_list:
-            if employee['name'].lower() == name.lower():
-                return employee['Emp_id']
-        print("Employee not found!")
-        return None
-
-    def delete_employee(self, emp_id):
-        for employee in self.employee_list:
-            if employee['Emp_id'] == emp_id:
-                self.employee_list.remove(employee)
-                print("Employee deleted successfully!")
-                return
-        print("Employee ID not found!")
-
-# --- Main Program ---
-if __name__ == "__main__":
-    employee_manager = Employee()
-
-    while True:
-        print("\nSelect an operation:")
-        print("1. Create Employee")
-        print("2. View All Employees")
-        print("3. Mark Attendance")
-        print("4. View Attendance")
-        print("5. Delete Employee")
-        print("6. Exit")
-
-        try:
-            user_choice = int(input("Enter your choice: "))
-        except ValueError:
-            print("Invalid input! Please enter a number between 1 and 6.")
-            continue
-
-        if user_choice == 1:
-            name = input("Enter employee name: ").strip()
-            try:
-                age = int(input("Enter employee age: "))
-                employee_manager.create_employee(name, age)
-            except ValueError:
-                print("Invalid age! Please enter a valid number.")
-
-        elif user_choice == 2:
-            employee_manager.display_employee_all()
-
-        elif user_choice == 3:
-            try:
-                emp_id = int(input("Enter Employee ID to mark attendance: "))
-                employee_manager.mark_attendance(emp_id)
-            except ValueError:
-                print("Invalid ID! Please enter a valid number.")
-
-        elif user_choice == 4:
-            try:
-                emp_id = int(input("Enter Employee ID to view attendance: "))
-                employee_manager.view_attendance(emp_id)
-            except ValueError:
-                print("Invalid ID! Please enter a valid number.")
-
-        elif user_choice == 5:
-            try:
-                emp_id = int(input("Enter Employee ID to delete: "))
-                employee_manager.delete_employee(emp_id)
-            except ValueError:
-                print("Invalid ID! Please enter a valid number.")
-
-        elif user_choice == 6:
-            print("Exiting the program...")
-            break
-
+def loan_eligibility(age, salary, credit_score):
+    if 21 <= age <= 60:  
+        if salary >= 20000:  
+            if credit_score >= 650:  
+                return "Loan Approved!"
+            else:
+                return "Loan Denied: Low Credit Score."
         else:
-            print("Invalid choice! Please enter a number between 1 and 6.")
+            return "Loan Denied."
+    else:
+        return "Age not within eligible range."
 
 
+age = int(input("Enter your age: "))
+salary = float(input("Enter your monthly salary: "))
+credit_score = int(input("Enter your credit score: "))
+
+result = loan_eligibility(age, salary, credit_score)
+print(result)
+
+#Problem 2: AI Chatbot with Conditional Responses
+# Design a simple chatbot that responds differently based on user input (e.g., greetings, questions, or farewell messages).
+def chatbotresponse(userinput):
+    userinput = userinput.lower()
+
+    
+    greetings = ["hello", "hi", "hey", "greetings"]
+    if userinput in greetings:
+        return "Hello! How can I assist you today?"
+
+    
+    farewells = ["bye", "goodbye", "see you"]
+    if userinput in farewells:
+        return "Goodbye! Have a great day!"
+
+    
+    if "how are you" in userinput:
+        return "I'm just a bot, but I'm doing great! How about you?"
+    elif "your name" in userinput:
+        return "I am ChatBot, your virtual assistant!"
+    elif "help" in userinput:
+        return "how can I help U?"
+    
+    
+    return "Can you ask something else?"
 
 
-#  2. Password Strength Checker
+print("AI Chatbot: 'bye' to exit.")
+while True:
+    user_input = input()
+    if user_input.lower() == "bye":
+        print("Chatbot: Goodbye! Have a great day!")
+        break
+    response = chatbotresponse(user_input)
+    print(f"Chatbot: {response}")
 
-def check_password_strength(password):
-    """Evaluates the strength of a given password without using regex."""
+# Problem 3: Traffic Light Simulation
+# Simulate a traffic light system using conditionals and loops.
+import time  
+def traffic_light():
+    lights = [("RED", 5), ("YELLOW", 2), ("GREEN", 5)]  
+    print("Traffic Light Simulation (Press Ctrl + C to stop) \n")
 
-    # Initialize criteria flags
-    has_upper = has_lower = has_digit = has_special = False
+    while True: 
+        for light, duration in lights:
+            print(f"{light} - Wait for {duration} seconds")
+            time.sleep(duration)  
+            print("\n")  
+
+traffic_light()  
+
+# Problem 4: Smart Home Automation
+# Implement a conditional-based smart home system where temperature, humidity, and motion sensors determine actions (e.g., turning lights and fans on/off).
+
+def smarthome(temp,humidity,motion):
+    if temp>30:
+        fan="ON"
+    else:
+        fan="OFF"
+
+    if humidity>70:
+        dehumidifier="ON"
+    else:
+        dehumidifier="OFF"
+    
+    if motion:
+        light="ON"
+    else:
+        light="OFF"
+
+    print("\n Smart Home Status:")
+    print(f"Temperature: {temp}°C → Fan: {fan}")
+    print(f"Humidity: {humidity}% → Dehumidifier: {dehumidifier}")
+    print(f"Motion: {'Detected' if motion else 'No Motion'} → Lights: {light}")
+    
+while True:
+    temp = int(input("\nEnter Temperature (°C): "))
+    humidity = int(input("Enter Humidity (%): "))
+    motion = input("motion detected? (yes/no): ").strip().lower() == "yes"
+
+    smarthome(temp, humidity, motion)
+
+# 7. Password Strength Checker
+# Classify passwords as "Weak", "Medium", or "Strong" based on length, numbers, uppercase/lowercase letters, and special characters.
+# Loop until a "Strong" password is entered.
+def passwordstrength(password):
+    strength = 0
+    has_upper = False
+    has_lower = False
+    has_digit = False
+    has_special = False
     special_chars = "!@#$%^&*(),.?\":{}|<>"
 
-    # Check each character in the password
+
     for char in password:
         if char.isupper():
             has_upper = True
@@ -153,23 +124,72 @@ def check_password_strength(password):
             has_digit = True
         elif char in special_chars:
             has_special = True
+    
+    
+    if len(password) >= 8:
+        strength += 1
+    if has_digit:
+        strength += 1
+    if has_upper and has_lower:
+        strength += 1
+    if has_special:
+        strength += 1
 
-    # Length check
-    length_criteria = len(password) >= 8
-
-    # Calculate strength score
-    strength_score = sum([length_criteria, has_upper, has_lower, has_digit, has_special])
-
-    # Determine password strength
-    if strength_score == 5:
-        return "Strong Password "
-    elif strength_score >= 3:
-        return "Medium Password "
+    
+    if strength == 4:
+        return "Strong"
+    elif strength == 3:
+        return "Medium"
     else:
-        return "Weak Password "
+        return "Weak"
 
-# --- Main Program ---
-if __name__ == "__main__":
-    password = input("Enter a password to check its strength: ").strip()
-    result = check_password_strength(password)
+
+while True:
+    password = input("Enter your password: ")
+    result = passwordstrength(password)
     print(f"Password Strength: {result}")
+    
+    if result == "Strong":
+        print("Password accepted!")
+        break
+    else:
+        print("Try a stronger password.")
+
+# 8. Banking System with ATM Functionality
+# Simulate an ATM system for checking balance, withdrawal, and deposit.
+# Use loops for multiple transactions and conditionals to prevent overdraft.
+
+# Initial balance
+balance = 1000
+
+while True:
+    print("\nWelcome to the ATM")
+    print("1. Check Balance")
+    print("2. Deposit Money")
+    print("3. Withdraw Money")
+    print("4. Exit")
+
+    choice = input("Enter your choice (1-4): ")
+
+    if choice == "1":
+        print(f"\nYour current balance is: {balance}")
+    elif choice == "2":
+        deposit = float(input("Enter deposit amount: ₹"))
+        if deposit > 0:
+            balance += deposit
+            print(f"\n {deposit} deposited.")
+        else:
+            print("\nInvalid deposit amount!")
+    elif choice == "3":
+        withdrawal = float(input("Enter withdrawal amount: "))
+        if withdrawal > balance:
+            print("\n Insufficient balance!")
+        else :
+            balance -= withdrawal
+            print(f"\n ₹{withdrawal} withdrawn. ")
+        
+    elif choice == "4":
+        print("\n Thank you!")
+        break
+    else:
+        print("\n Please try again.")
