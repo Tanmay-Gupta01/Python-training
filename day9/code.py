@@ -32,11 +32,6 @@ def chatbotresponse(userinput):
         return "Hello! How can I assist you today?"
 
     
-    farewells = ["bye", "goodbye", "see you"]
-    if userinput in farewells:
-        return "Goodbye! Have a great day!"
-
-    
     if "how are you" in userinput:
         return "I'm just a bot, but I'm doing great! How about you?"
     elif "your name" in userinput:
