@@ -27,7 +27,7 @@ class Employee:
     def mark_attendance(self, emp_id):
         for employee in Employee.employee_list:
             if employee['Emp_id'] == emp_id:
-                last_seven_days = [date.today() - timedelta(days=i) for i in range(6, -1, -1)]
+                last_seven_days = [date.today() - timedelta(days=i) for i in range(7)]
                 attendance_data = {}
 
                 for day in last_seven_days:
