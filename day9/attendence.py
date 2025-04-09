@@ -1,4 +1,6 @@
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+import qrcode
+import json
 
 class Employee:
     """Manages employee records and attendance"""
@@ -53,29 +55,34 @@ class Employee:
                 print(f"Attendance for {employee['name']}:")
                 all_records = {}
 
-                # Combine all attendance records
                 for record in employee['attendance']:
                     all_records.update(record)
 
-                # Sort dates to maintain chronological order
-                sorted_dates = sorted(all_records.keys())
+                # Sort by date
+                sorted_dates = sorted(all_records.keys(), key=lambda x: datetime.strptime(x, "%Y-%m-%d"))
                 status_list = [all_records[dt] for dt in sorted_dates]
 
-                # Print attendance with status
                 for dt in sorted_dates:
                     status = all_records[dt]
                     print(f"{dt}: {'Present' if status == 'p' else 'Absent'}")
 
                 # Check for 3 consecutive absents
-                count = 0
-                for status in status_list:
-                    if status == 'a':
-                        count += 1
-                        if count == 3:
-                            print("⚠️ Warning: Employee has been absent for 3 consecutive days!")
-                            break
-                    else:
-                        count = 0
+                for i in range(len(status_list) - 2):
+                    if status_list[i] == status_list[i+1] == status_list[i+2] == 'a':
+                        print("⚠️ Warning: Employee has been absent for 3 consecutive days!")
+                        break
+
+                # --- QR Code Generation ---
+                qr_data = {
+                    'Emp_id': employee['Emp_id'],
+                    'name': employee['name'],
+                    'attendance': all_records
+                }
+
+                qr = qrcode.make(json.dumps(qr_data, indent=2))
+                filename = f"attendance_qr_{employee['Emp_id']}.png"
+                qr.save(filename)
+                print(f"📌 Attendance QR code saved as '{filename}'")
                 return
 
         print("Employee ID not found!")
