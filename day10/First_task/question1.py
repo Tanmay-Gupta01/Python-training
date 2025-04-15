@@ -3,7 +3,7 @@ import csv
 scores = []
 avg =0
 
-with open('day10\\First_task\\question1.py', 'r') as file:
+with open('day10\\First_task\\students.txt', 'r') as file:
     for line in file:
         name, score = line.strip().split(',')
         scores.append([name, int(score)])
