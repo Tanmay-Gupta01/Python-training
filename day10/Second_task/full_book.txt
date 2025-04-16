@@ -1,0 +1,23 @@
+--- From input.txt ---
+hi this is the input file of Python
+
+hi this is the input file of Python
+
+2nd line
+--- From output.txt ---
+HI THIS IS THE INPUT FILE OF PYTHON
+
+HI THIS IS THE INPUT FILE OF PYTHON
+
+2ND LINE
+--- From frequency.txt ---
+hi : 2
+this : 2
+is : 2
+the : 2
+input : 2
+file : 2
+of : 2
+python : 2
+2nd : 1
+line : 1
