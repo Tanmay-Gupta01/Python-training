@@ -1,0 +1,10 @@
+hi : 2
+this : 2
+is : 2
+the : 2
+input : 2
+file : 2
+of : 2
+python : 2
+2nd : 1
+line : 1
