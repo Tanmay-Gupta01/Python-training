@@ -10,14 +10,25 @@
 #             count += 1
 #     print(count)
 
-# 12 th question
 
-from collections import Counter
-with open('day10\\Second_task\\input.txt','r') as file:
-    lines = file.read().lower()
 
-words = lines.split()
-dictionary = Counter(words)
-with open('day10\\Second_task\\frequency.txt','w') as fp:
-    for word, frequency in dictionary.items():
-        fp.write(f'{word} : {frequency}\n')
+# # 12 th question
+
+# from collections import Counter
+# with open('day10\\Second_task\\input.txt','r') as file:
+#     lines = file.read().lower()
+
+# words = lines.split()
+# dictionary = Counter(words)
+# with open('day10\\Second_task\\frequency.txt','w') as fp:
+#     for word, frequency in dictionary.items():
+#         fp.write(f'{word} : {frequency}\n')
+
+
+
+# 13 th question
+
+with open('day10\\Second_task\\sales.csv','r')as file:
+    line = file.read()
+    lines = line.split('\n')
+    

@@ -10,7 +10,7 @@ with open('day10\\First_task\\students.txt', 'r') as file:
 
 
 for i in scores:
-    avg +=i[1];
+    avg +=i[1]
 average = avg/len(scores)
 
 
