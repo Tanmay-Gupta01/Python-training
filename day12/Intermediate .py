@@ -10,13 +10,13 @@ print(evensum([2,3,4,5,6,7,8]))
 # Reverse String
 def reverse(s:str)->str:
     return s[::-1]
-print(reverse("vaibhav"))
+print(reverse("tanmay"))
 
 # count vowels
 def countvowels(sentence:str)->int:
     vowels="aeiouAEIOU"
     return sum(1 for char in sentence if char in vowels)
-print(countvowels("vaibhav dixit"))
+print(countvowels("Tanmay Gupta"))
 
 
 # Avergae Marks
